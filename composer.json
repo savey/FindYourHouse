@@ -1,6 +1,6 @@
 {
     "name": "savey/findYourHouse",
-    "description": "help your find your beloved house!",
+    "description": "Alfred 3 will help you find your beloved house!",
     "type": "project",
     "require": {
         "joetannenbaum/alfred-workflow": "^0.1.1",
