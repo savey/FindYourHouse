@@ -6,73 +6,11 @@
 	<string></string>
 	<key>connections</key>
 	<dict>
-		<key>47236126-BAD0-406D-BE6D-8DB6D49ED77E</key>
-		<array>
-			<dict>
-				<key>destinationuid</key>
-				<string>A042DF75-DAD2-4EA3-BB48-618B0CF86497</string>
-				<key>modifiers</key>
-				<integer>0</integer>
-				<key>modifiersubtext</key>
-				<string></string>
-				<key>vitoclose</key>
-				<false/>
-			</dict>
-			<dict>
-				<key>destinationuid</key>
-				<string>A7781B0B-0076-44D4-8FB0-7332F05C9F90</string>
-				<key>modifiers</key>
-				<integer>0</integer>
-				<key>modifiersubtext</key>
-				<string></string>
-				<key>vitoclose</key>
-				<false/>
-			</dict>
-		</array>
 		<key>4FAC8AF6-3407-49D9-8EEE-575676D85D6D</key>
 		<array>
 			<dict>
 				<key>destinationuid</key>
 				<string>AA2301A4-5550-4002-A090-7A4814357ECF</string>
-				<key>modifiers</key>
-				<integer>0</integer>
-				<key>modifiersubtext</key>
-				<string></string>
-				<key>vitoclose</key>
-				<false/>
-			</dict>
-		</array>
-		<key>A042DF75-DAD2-4EA3-BB48-618B0CF86497</key>
-		<array>
-			<dict>
-				<key>destinationuid</key>
-				<string>7D80F5CA-07D0-4908-A6AF-9CC0C44BECDE</string>
-				<key>modifiers</key>
-				<integer>0</integer>
-				<key>modifiersubtext</key>
-				<string></string>
-				<key>vitoclose</key>
-				<false/>
-			</dict>
-		</array>
-		<key>A7781B0B-0076-44D4-8FB0-7332F05C9F90</key>
-		<array>
-			<dict>
-				<key>destinationuid</key>
-				<string>4FAC8AF6-3407-49D9-8EEE-575676D85D6D</string>
-				<key>modifiers</key>
-				<integer>0</integer>
-				<key>modifiersubtext</key>
-				<string></string>
-				<key>vitoclose</key>
-				<false/>
-			</dict>
-		</array>
-		<key>B8C870B5-EFC3-4C2B-B821-0EAD6CFE4EA5</key>
-		<array>
-			<dict>
-				<key>destinationuid</key>
-				<string>47236126-BAD0-406D-BE6D-8DB6D49ED77E</string>
 				<key>modifiers</key>
 				<integer>0</integer>
 				<key>modifiersubtext</key>
@@ -100,29 +38,27 @@
 				<key>argumenttype</key>
 				<integer>0</integer>
 				<key>escaping</key>
-				<integer>34</integer>
+				<integer>36</integer>
 				<key>keyword</key>
-				<string>fh-house</string>
+				<string>fh-region</string>
 				<key>queuedelaycustom</key>
 				<integer>3</integer>
 				<key>queuedelayimmediatelyinitially</key>
-				<false/>
+				<true/>
 				<key>queuedelaymode</key>
 				<integer>0</integer>
 				<key>queuemode</key>
 				<integer>1</integer>
 				<key>runningsubtext</key>
-				<string>Loading</string>
+				<string>"{query}"</string>
 				<key>script</key>
-				<string>query="{query}"
-
-echo -n $query</string>
+				<string>php find-house-script.php "{query}"</string>
 				<key>scriptargtype</key>
 				<integer>0</integer>
 				<key>scriptfile</key>
 				<string></string>
 				<key>subtext</key>
-				<string>input your house name!</string>
+				<string>Regional Housing Search</string>
 				<key>title</key>
 				<string>Find the house</string>
 				<key>type</key>
@@ -133,92 +69,9 @@ echo -n $query</string>
 			<key>type</key>
 			<string>alfred.workflow.input.scriptfilter</string>
 			<key>uid</key>
-			<string>7D80F5CA-07D0-4908-A6AF-9CC0C44BECDE</string>
+			<string>4FAC8AF6-3407-49D9-8EEE-575676D85D6D</string>
 			<key>version</key>
 			<integer>2</integer>
-		</dict>
-		<dict>
-			<key>config</key>
-			<dict>
-				<key>inputstring</key>
-				<string>{var:dis}</string>
-				<key>matchcasesensitive</key>
-				<true/>
-				<key>matchmode</key>
-				<integer>0</integer>
-				<key>matchstring</key>
-				<string>house</string>
-			</dict>
-			<key>type</key>
-			<string>alfred.workflow.utility.filter</string>
-			<key>uid</key>
-			<string>A042DF75-DAD2-4EA3-BB48-618B0CF86497</string>
-			<key>version</key>
-			<integer>1</integer>
-		</dict>
-		<dict>
-			<key>config</key>
-			<dict>
-				<key>argumenttype</key>
-				<integer>1</integer>
-				<key>fixedorder</key>
-				<true/>
-				<key>items</key>
-				<string>[{"title":"小区名","arg":"house","subtitle":"按小区查找"},{"title":"区域名","arg":"area","subtitle":"按区域名查找"}]</string>
-				<key>keyword</key>
-				<string>fhouse</string>
-				<key>runningsubtext</key>
-				<string></string>
-				<key>subtext</key>
-				<string>select the list</string>
-				<key>title</key>
-				<string>选择小区、或者区域</string>
-				<key>withspace</key>
-				<true/>
-			</dict>
-			<key>type</key>
-			<string>alfred.workflow.input.listfilter</string>
-			<key>uid</key>
-			<string>B8C870B5-EFC3-4C2B-B821-0EAD6CFE4EA5</string>
-			<key>version</key>
-			<integer>1</integer>
-		</dict>
-		<dict>
-			<key>config</key>
-			<dict>
-				<key>argument</key>
-				<string>{query}</string>
-				<key>variables</key>
-				<dict>
-					<key>dis</key>
-					<string>{query}</string>
-				</dict>
-			</dict>
-			<key>type</key>
-			<string>alfred.workflow.utility.argument</string>
-			<key>uid</key>
-			<string>47236126-BAD0-406D-BE6D-8DB6D49ED77E</string>
-			<key>version</key>
-			<integer>1</integer>
-		</dict>
-		<dict>
-			<key>config</key>
-			<dict>
-				<key>inputstring</key>
-				<string>{var:dis}</string>
-				<key>matchcasesensitive</key>
-				<true/>
-				<key>matchmode</key>
-				<integer>0</integer>
-				<key>matchstring</key>
-				<string>area</string>
-			</dict>
-			<key>type</key>
-			<string>alfred.workflow.utility.filter</string>
-			<key>uid</key>
-			<string>A7781B0B-0076-44D4-8FB0-7332F05C9F90</string>
-			<key>version</key>
-			<integer>1</integer>
 		</dict>
 		<dict>
 			<key>config</key>
@@ -239,102 +92,24 @@ echo -n $query</string>
 			<key>version</key>
 			<integer>1</integer>
 		</dict>
-		<dict>
-			<key>config</key>
-			<dict>
-				<key>alfredfiltersresults</key>
-				<false/>
-				<key>argumenttype</key>
-				<integer>0</integer>
-				<key>escaping</key>
-				<integer>36</integer>
-				<key>keyword</key>
-				<string>fh-area</string>
-				<key>queuedelaycustom</key>
-				<integer>3</integer>
-				<key>queuedelayimmediatelyinitially</key>
-				<true/>
-				<key>queuedelaymode</key>
-				<integer>0</integer>
-				<key>queuemode</key>
-				<integer>1</integer>
-				<key>runningsubtext</key>
-				<string>"{query}"</string>
-				<key>script</key>
-				<string>php find-house-script.php "{query}"</string>
-				<key>scriptargtype</key>
-				<integer>0</integer>
-				<key>scriptfile</key>
-				<string></string>
-				<key>subtext</key>
-				<string>find your house in area</string>
-				<key>title</key>
-				<string>Find house By eare</string>
-				<key>type</key>
-				<integer>0</integer>
-				<key>withspace</key>
-				<true/>
-			</dict>
-			<key>type</key>
-			<string>alfred.workflow.input.scriptfilter</string>
-			<key>uid</key>
-			<string>4FAC8AF6-3407-49D9-8EEE-575676D85D6D</string>
-			<key>version</key>
-			<integer>2</integer>
-		</dict>
 	</array>
 	<key>readme</key>
 	<string></string>
 	<key>uidata</key>
 	<dict>
-		<key>47236126-BAD0-406D-BE6D-8DB6D49ED77E</key>
-		<dict>
-			<key>xpos</key>
-			<integer>250</integer>
-			<key>ypos</key>
-			<integer>190</integer>
-		</dict>
 		<key>4FAC8AF6-3407-49D9-8EEE-575676D85D6D</key>
 		<dict>
 			<key>xpos</key>
-			<integer>540</integer>
+			<integer>230</integer>
 			<key>ypos</key>
-			<integer>350</integer>
-		</dict>
-		<key>7D80F5CA-07D0-4908-A6AF-9CC0C44BECDE</key>
-		<dict>
-			<key>xpos</key>
-			<integer>550</integer>
-			<key>ypos</key>
-			<integer>20</integer>
-		</dict>
-		<key>A042DF75-DAD2-4EA3-BB48-618B0CF86497</key>
-		<dict>
-			<key>xpos</key>
-			<integer>420</integer>
-			<key>ypos</key>
-			<integer>70</integer>
-		</dict>
-		<key>A7781B0B-0076-44D4-8FB0-7332F05C9F90</key>
-		<dict>
-			<key>xpos</key>
-			<integer>410</integer>
-			<key>ypos</key>
-			<integer>330</integer>
+			<integer>140</integer>
 		</dict>
 		<key>AA2301A4-5550-4002-A090-7A4814357ECF</key>
 		<dict>
 			<key>xpos</key>
-			<integer>810</integer>
+			<integer>660</integer>
 			<key>ypos</key>
-			<integer>350</integer>
-		</dict>
-		<key>B8C870B5-EFC3-4C2B-B821-0EAD6CFE4EA5</key>
-		<dict>
-			<key>xpos</key>
-			<integer>50</integer>
-			<key>ypos</key>
-			<integer>170</integer>
+			<integer>140</integer>
 		</dict>
 	</dict>
 	<key>webaddress</key>
