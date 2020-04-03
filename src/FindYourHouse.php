@@ -12,8 +12,6 @@ namespace Savey\FindYourHouse;
 use Alfred\Workflows\Workflow;
 use QL\QueryList;
 use Swoole\Process;
-use Swoole\Runtime;
-use Co;
 
 
 class FindYourHouse
@@ -43,18 +41,31 @@ class FindYourHouse
     //查看是否生成当天的数据文件
     private function loadDataIntoFile($regionArg)
     {
-
-        if (!is_dir($this->path)) {
-            mkdir($this->path, 0777);
+        $todayDate = date("Ymd");
+        if (!is_dir($this->path . $todayDate)) {
+            mkdir($this->path . $todayDate, 0777);
         }
-        Runtime::enableCoroutine();
+
+        $yestodayDate = date('Ymd', strtotime('-1 days'));
+
+        if (is_dir($yestodayDateFilesDir = $this->path . $yestodayDate)) {
+            //删除旧数据
+            $files = scandir($yestodayDateFilesDir);
+
+            foreach ($files as $file) {
+                if ($file == '.' || $file == "..") {
+                    continue;
+                }
+                unlink($yestodayDateFilesDir. DIRECTORY_SEPARATOR . $file);
+            }
+            rmdir($yestodayDateFilesDir);
+        }
+
         foreach (self::$allSearchRegionsMap as $regoin => $url) {
-           go(function() use ($regoin, $url) {
+           $pro = new Process(function($work) use ($regoin, $url, $todayDate) {
                 //获取数据
-                $name     = date('Ymd') . $regoin;
-                $fileName = $this->path . $name . '.json';
+                $fileName = $this->path . $todayDate . DIRECTORY_SEPARATOR . $regoin . '.json';
                 if (!file_exists($fileName)) {
-                    touch($fileName);
                     $document = QueryList::get($url);
                     $html     = $document->rules([
                         'title' => ['.xiaoquListItem .title a', 'text'],
@@ -64,17 +75,21 @@ class FindYourHouse
                     ])
                         ->query()->getData();
                     file_put_contents($fileName, json_encode($html, JSON_UNESCAPED_UNICODE));
-
-                    echo $regoin . PHP_EOL;
                 }
             });
+
+            $pro->start();
         }
 
+
+        Process::wait();
+
+
         while (1) {
-            $name     = date('Ymd') . $regionArg;
-            $fileName = $this->path . $name . '.json';
+            $fileName = $this->path . $todayDate . DIRECTORY_SEPARATOR . $regionArg . '.json';
             if (file_exists($fileName)) {
-                return json_decode(file_get_contents($fileName), 1);
+                $json = file_get_contents($fileName);
+                return json_decode($json, 1);
                 break;
             }
         }
